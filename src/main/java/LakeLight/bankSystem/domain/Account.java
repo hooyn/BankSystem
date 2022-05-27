@@ -1,6 +1,8 @@
 package LakeLight.bankSystem.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account {
 
     @Id @GeneratedValue
@@ -16,6 +19,7 @@ public class Account {
     private Long id;
 
     private String bank_name;
+    private String name;
     private String account_number;
     private String password;
     private int balance;
@@ -42,5 +46,13 @@ public class Account {
         } else {
             throw new IllegalStateException("잔액이 부족합니다.");
         }
+    }
+
+    public Account(String bank_name, String name, String account_number, String password, int balance) {
+        this.bank_name = bank_name;
+        this.name = name;
+        this.account_number = account_number;
+        this.password = password;
+        this.balance = balance;
     }
 }
