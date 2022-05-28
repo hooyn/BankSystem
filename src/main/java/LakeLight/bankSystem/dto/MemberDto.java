@@ -8,12 +8,14 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class MemberDto {
-    private String name;
+    private Long id;
+    private String username;
     private String social_security_number;
     private String tel_number;
 
-    public MemberDto(String name, String social_security_number, String tel_number) {
-        this.name = name;
+    public MemberDto(Long id, String username, String social_security_number, String tel_number) {
+        this.id = id;
+        this.username = username;
         this.social_security_number = social_security_number;
         this.tel_number = tel_number;
     }
