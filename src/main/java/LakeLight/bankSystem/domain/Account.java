@@ -41,18 +41,17 @@ public class Account {
     }
 
     public void subBalance(int money){
-        if((balance - money) >= 0){
-            balance -= money;
-        } else {
-            throw new IllegalStateException("잔액이 부족합니다.");
-        }
+        balance -= money;
     }
 
-    public Account(String bank_name, String name, String account_number, String password, int balance) {
+    public Account(Member member, String bank_name, String name, String account_number, String password, int balance) {
+        this.member = member;
         this.bank_name = bank_name;
         this.name = name;
         this.account_number = account_number;
         this.password = password;
         this.balance = balance;
     }
+
+
 }
