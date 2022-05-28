@@ -26,21 +26,30 @@ public class MemberRepository {
     public List<MemberDto> findAll(){
         return queryFactory
                 .select(Projections.constructor(MemberDto.class,
-                        member.name,
+                        member.id,
+                        member.username,
                         member.social_security_number,
                         member.tel_number))
                 .from(member)
                 .fetch();
     }
 
-    public MemberDto findByName(String name){
+    public MemberDto findBySecurityNum(String number){
         return queryFactory
                 .select(Projections.constructor(MemberDto.class,
-                        member.name,
+                        member.id,
+                        member.username,
                         member.social_security_number,
                         member.tel_number))
                 .from(member)
-                .where(member.name.eq(name))
+                .where(member.social_security_number.eq(number))
                 .fetchOne();
+    }
+
+    public void delete(String number){
+        MemberDto member = findBySecurityNum(number);
+        if(member!=null){
+            em.remove(member);
+        }
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 @SpringBootTest
 @Transactional
 class MemberRepositoryTest {
+
     @Autowired
     MemberRepository memberRepository;
 
@@ -29,15 +30,15 @@ class MemberRepositoryTest {
         
         //when
         List<MemberDto> findAll = memberRepository.findAll();
-        MemberDto hoyun0 = memberRepository.findByName("hoyun0");
+        MemberDto hoyun0 = memberRepository.findBySecurityNum("980311-1");
         //then
 
         for (MemberDto memberDto : findAll) {
-            System.out.println("memberDto = " + memberDto.getName());
+            System.out.println("memberDto = " + memberDto.getUsername());
         }
-        System.out.println(hoyun0.getName());
+        System.out.println(hoyun0.getUsername());
 
-        Assertions.assertThat(hoyun0.getName()).isEqualTo("hoyun0");
+        Assertions.assertThat(hoyun0.getUsername()).isEqualTo("hoyun0");
     }
 
 }
