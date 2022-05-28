@@ -1,5 +1,6 @@
 package LakeLight.bankSystem.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,8 @@ public class Transaction {
 
     private String info;
     private int amount;
+    private int balance_before;
+    private int balance_after;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
@@ -29,5 +32,12 @@ public class Transaction {
     public void setAccount(Account account){
         this.account = account;
         account.getTransactions().add(this);
+    }
+
+    public Transaction(String info, int amount, Account account, TransactionStatus status) {
+        this.info = info;
+        this.amount = amount;
+        this.account = account;
+        this.status = status;
     }
 }
