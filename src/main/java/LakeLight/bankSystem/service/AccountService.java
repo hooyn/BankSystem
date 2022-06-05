@@ -33,10 +33,10 @@ public class AccountService {
     /**
      * 계좌 번호로 계좌 조회 -> DetailAccountDto로 바꾸기
      */
-//    @Transactional(readOnly = true)
-//    public DetailAccountDto findAccount(String account_num){
-//        return accountRepository.findByAccountNumDetail(account_num);
-//    }
+    @Transactional(readOnly = true)
+    public AccountDto findAccount(String account_num){
+        return accountRepository.findByAccountNum(account_num);
+    }
 
     /**
      * 계좌 삭제
