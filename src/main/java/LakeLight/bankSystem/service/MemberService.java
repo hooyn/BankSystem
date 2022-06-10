@@ -40,11 +40,11 @@ public class MemberService {
     }
 
     /**
-     * 회원 한명 조회
+     * 회원 한명 조회 (주민번호로)
      */
     @Transactional(readOnly = true)
-    public MemberDto findMember(String name){
-        return memberRepository.findBySecurityNum(name);
+    public MemberDto findMember(String num){
+        return memberRepository.findBySecurityNum(num);
     }
 
     /**
