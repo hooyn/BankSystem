@@ -31,7 +31,7 @@ public class AccountService {
     }
 
     /**
-     * 계좌 번호로 계좌 조회 -> DetailAccountDto로 바꾸기
+     * 계좌 번호로 계좌 조회
      */
     @Transactional(readOnly = true)
     public AccountDto findAccount(String account_num){
