@@ -48,6 +48,14 @@ public class MemberService {
     }
 
     /**
+     * 회원 한명 조회 (id)
+     */
+    @Transactional(readOnly = true)
+    public Member findOne(Long id){
+        return memberRepository.findById(id);
+    }
+
+    /**
      * 회원 삭제
      */
     public void deleteMember(String number){

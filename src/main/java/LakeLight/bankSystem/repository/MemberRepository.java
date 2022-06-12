@@ -52,4 +52,11 @@ public class MemberRepository {
             em.remove(member);
         }
     }
+
+    public Member findById(Long id){
+        return queryFactory
+                .selectFrom(member)
+                .where(member.id.eq(id))
+                .fetchOne();
+    }
 }
