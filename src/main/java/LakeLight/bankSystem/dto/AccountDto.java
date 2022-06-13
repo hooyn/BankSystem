@@ -12,12 +12,14 @@ public class AccountDto {
     private String name;
     private String account_number;
     private String username;
+    private int balance;
 
-    public AccountDto(Long id, String bank_name, String name, String account_number, String username) {
+    public AccountDto(Long id, String bank_name, String name, String account_number, String username, int balance) {
         this.id = id;
         this.bank_name = bank_name;
         this.name = name;
         this.account_number = account_number;
         this.username = username;
+        this.balance = balance;
     }
 }

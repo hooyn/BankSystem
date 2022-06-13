@@ -39,6 +39,14 @@ public class AccountService {
     }
 
     /**
+     * Account_Id에 따른 계좌 조회
+     */
+    @Transactional(readOnly = true)
+    public Account findOne(Long id){
+        return accountRepository.findById(id);
+    }
+
+    /**
      * 계좌 삭제
      */
 }

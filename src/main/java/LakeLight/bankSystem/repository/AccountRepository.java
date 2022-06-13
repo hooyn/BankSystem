@@ -29,7 +29,8 @@ public class AccountRepository {
                         account.bank_name,
                         account.name,
                         account.account_number,
-                        account.member.username))
+                        account.member.username,
+                        account.balance))
                 .from(account)
                 .where(account.member.social_security_number.eq(number))
                 .fetch();
@@ -42,7 +43,8 @@ public class AccountRepository {
                         account.bank_name,
                         account.name,
                         account.account_number,
-                        account.member.username))
+                        account.member.username,
+                        account.balance))
                 .from(account)
                 .where(account.account_number.eq(account_num))
                 .fetchOne();
