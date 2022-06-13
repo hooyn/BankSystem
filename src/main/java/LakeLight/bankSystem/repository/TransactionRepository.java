@@ -29,15 +29,18 @@ public class TransactionRepository {
             account.addBalance(transaction.getAmount());
             transaction.setBalance_after(account.getBalance());
             em.persist(transaction);
+            em.flush();
+            em.clear();
         } else if(transaction.getStatus().equals(TransactionStatus.WITHDRAW)){
             if((account.getBalance() - transaction.getAmount()) >= 0){
                 transaction.setBalance_before(account.getBalance());
                 account.subBalance(transaction.getAmount());
                 transaction.setBalance_after(account.getBalance());
                 em.persist(transaction);
+                em.flush();
+                em.clear();
             } else {
-                System.out.println("잔액 부족!!!!!");
-                //throw new IllegalStateException("잔액이 부족합니다.");
+                throw new IllegalStateException("잔액이 부족합니다.");
             }
         }
     }
@@ -51,7 +54,8 @@ public class TransactionRepository {
                         transaction.balance_before,
                         transaction.amount,
                         transaction.balance_after,
-                        transaction.status))
+                        transaction.status,
+                        transaction.localDateTime))
                 .from(transaction)
                 .where(transaction.account.account_number.eq(account_num))
                 .fetch();

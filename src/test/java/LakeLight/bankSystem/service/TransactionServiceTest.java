@@ -51,6 +51,8 @@ class TransactionServiceTest {
         transactionService.createTransaction(애플워치);
         transactionService.createTransaction(용돈);
 
+
+
         List<TransactionDto> transactions = transactionService.findTransactions("2149-02");
         for (TransactionDto transaction : transactions) {
             System.out.println("transaction = " + transaction);

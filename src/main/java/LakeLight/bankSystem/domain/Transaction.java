@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
@@ -21,6 +22,8 @@ public class Transaction {
     private int amount;
     private int balance_before;
     private int balance_after;
+    private LocalDateTime localDateTime;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
@@ -39,5 +42,6 @@ public class Transaction {
         this.amount = amount;
         this.account = account;
         this.status = status;
+        this.localDateTime = LocalDateTime.now();
     }
 }
