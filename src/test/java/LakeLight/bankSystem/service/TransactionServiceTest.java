@@ -46,10 +46,6 @@ class TransactionServiceTest {
         Transaction 애플워치 = new Transaction("아이패드", 340_000, account1, TransactionStatus.WITHDRAW);
         Transaction 용돈 = new Transaction("용돈", 1_500_000, account1, TransactionStatus.DEPOSIT);
 
-        transactionService.createTransaction(아이패드);
-        transactionService.createTransaction(맥북);
-        transactionService.createTransaction(애플워치);
-        transactionService.createTransaction(용돈);
 
 
 
