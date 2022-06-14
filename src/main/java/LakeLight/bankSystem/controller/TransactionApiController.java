@@ -25,9 +25,7 @@ public class TransactionApiController {
      */
     @PostMapping("/transaction/deposit")
     public Result deposit(@RequestBody CreateTransactionRequest request){
-        Account account = accountService.findOne(request.getAccount_id());
-        Transaction transaction = new Transaction(request.getInfo(), request.getAmount(), account, TransactionStatus.DEPOSIT);
-        transactionService.createTransaction(transaction);
+        transactionService.saveTransaction(request.getAccount_id(), request.getInfo(), request.getAmount(), TransactionStatus.DEPOSIT);
 
         return new Result(true, 200, null, "입금 완료");
     }
@@ -37,9 +35,7 @@ public class TransactionApiController {
      */
     @PostMapping("/transaction/withdraw")
     public Result withdraw(@RequestBody CreateTransactionRequest request){
-        Account account = accountService.findOne(request.getAccount_id());
-        Transaction transaction = new Transaction(request.getInfo(), request.getAmount(), account, TransactionStatus.WITHDRAW);
-        transactionService.createTransaction(transaction);
+        transactionService.saveTransaction(request.getAccount_id(), request.getInfo(), request.getAmount(), TransactionStatus.WITHDRAW);
 
         return new Result(true, 200, null, "출금 완료");
     }
