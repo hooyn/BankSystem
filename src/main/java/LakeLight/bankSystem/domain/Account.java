@@ -38,11 +38,15 @@ public class Account {
     }
 
     public void addBalance(int money){
-        balance += money;
+        this.balance += money;
     }
 
     public void subBalance(int money){
-        balance -= money;
+        int restBalance = this.balance - money;
+        if(restBalance<0){
+            throw new IllegalStateException("Not Enough Balance");
+        }
+        this.balance = restBalance;
     }
 
     public Account(Member member, String bank_name, String name, String account_number, String password, int balance) {
