@@ -44,4 +44,23 @@ public class Transaction {
         this.status = status;
         this.localDateTime = LocalDateTime.now();
     }
+
+    public static Transaction createTransaction(String info, int amount, Account account, TransactionStatus status){
+        Transaction transaction = new Transaction();
+        transaction.setInfo(info);
+        transaction.setAmount(amount);
+        transaction.setAccount(account);
+        transaction.setStatus(status);
+        transaction.setLocalDateTime(LocalDateTime.now());
+        transaction.setBalance_before(account.getBalance());
+        if(status==TransactionStatus.WITHDRAW){
+            transaction.setBalance_after(account.getBalance()-amount);
+            account.subBalance(amount);
+        } else {
+            transaction.setBalance_after(account.getBalance()+amount);
+            account.addBalance(amount);
+        }
+
+        return transaction;
+    }
 }
